@@ -120,9 +120,10 @@ export default function AffiliateOnboardingPage() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  {getCurrentStepIcon(currentStep) && (
-                    <getCurrentStepIcon.currentStep className="h-5 w-5 text-green-500" />
-                  )}
+                  {(() => {
+                    const IconComponent = getCurrentStepIcon(currentStep)
+                    return IconComponent ? <IconComponent className="h-5 w-5 text-green-500" /> : null
+                  })()}
                   {getCurrentStepTitle(currentStep)}
                 </CardTitle>
               </CardHeader>
