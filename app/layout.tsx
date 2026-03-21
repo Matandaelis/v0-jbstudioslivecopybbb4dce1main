@@ -9,9 +9,9 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "JB Studios - Live Commerce Platform",
+  title: "Shop Live, Shop Together | Live Shopping Platform",
   description:
-    "Join thousands of creators selling beauty & auto products through interactive live streams. Build your network and earn up to 25% commission.",
+    "Experience the future of shopping with live streaming deals, real-time interactions, and exclusive products. Join 50K+ shoppers and save big on beauty, fashion, and more.",
   generator: "v0.app",
   icons: {
     icon: [
