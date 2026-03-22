@@ -9,11 +9,11 @@ This guide walks through implementing the enhanced database schema and integrati
 ### Step 1: Execute Migration Scripts
 
 1. **Core Schema Migration:**
-   ```bash
+   \`\`\`bash
    # Navigate to Supabase SQL Editor or use psql
    # Copy contents of scripts/01_core_schema_migration.sql
    # Execute in Supabase dashboard or CLI
-   ```
+   \`\`\`
 
    This creates:
    - 13 core tables (products, orders, payments, etc.)
@@ -21,9 +21,9 @@ This guide walks through implementing the enhanced database schema and integrati
    - Enables RLS on all tables
 
 2. **RLS Policies Migration:**
-   ```bash
+   \`\`\`bash
    # Execute scripts/02_rls_policies_migration.sql
-   ```
+   \`\`\`
 
    This creates:
    - Role-based access policies
@@ -31,9 +31,9 @@ This guide walks through implementing the enhanced database schema and integrati
    - Admin override capabilities
 
 3. **Functions & Triggers:**
-   ```bash
+   \`\`\`bash
    # Execute scripts/03_triggers_and_functions.sql
-   ```
+   \`\`\`
 
    This creates:
    - Automatic timestamp management
@@ -43,7 +43,7 @@ This guide walks through implementing the enhanced database schema and integrati
 
 ### Step 2: Verify Schema Creation
 
-```sql
+\`\`\`sql
 -- Check tables exist
 SELECT table_name FROM information_schema.tables 
 WHERE table_schema = 'public';
@@ -55,13 +55,13 @@ WHERE schemaname = 'public';
 -- Check functions
 SELECT routine_name FROM information_schema.routines 
 WHERE routine_schema = 'public';
-```
+\`\`\`
 
 ## Phase 2: API Route Implementation
 
 ### Route Structure
 
-```
+\`\`\`
 app/api/
 ├── products/
 │   ├── route.ts (GET, POST)
@@ -110,13 +110,13 @@ app/api/
     │   └── route.ts (GET)
     └── audit-logs/
         └── route.ts (GET)
-```
+\`\`\`
 
 ### Example: Products Route
 
 **`app/api/products/route.ts`**
 
-```typescript
+\`\`\`typescript
 import { NextRequest, NextResponse } from "next/server"
 import { getSupabaseServer } from "@/lib/supabase-server"
 import { hasPermission } from "@/lib/db-operations"
@@ -233,13 +233,13 @@ export async function POST(request: NextRequest) {
     )
   }
 }
-```
+\`\`\`
 
 ## Phase 3: Frontend Integration
 
 ### Using Database Operations
 
-```typescript
+\`\`\`typescript
 import { getSupabaseServer } from "@/lib/supabase-server"
 import {
   createOrder,
@@ -265,13 +265,13 @@ async function submitReview(reviewData) {
   const review = await createReview(reviewData)
   return review
 }
-```
+\`\`\`
 
 ## Phase 4: Testing
 
 ### Unit Tests
 
-```typescript
+\`\`\`typescript
 // __tests__/api/products.test.ts
 import { POST } from "@/app/api/products/route"
 import { NextRequest } from "next/server"
@@ -300,11 +300,11 @@ describe("Products API", () => {
     expect(response.status).toBe(403)
   })
 })
-```
+\`\`\`
 
 ### Integration Tests
 
-```typescript
+\`\`\`typescript
 // __tests__/integration/order-flow.test.ts
 describe("Order Flow", () => {
   it("should complete full order lifecycle", async () => {
@@ -331,22 +331,22 @@ describe("Order Flow", () => {
     expect(updatedOrder.status).toBe("confirmed")
   })
 })
-```
+\`\`\`
 
 ## Phase 5: Monitoring & Optimization
 
 ### Enable Query Logging
 
-```sql
+\`\`\`sql
 -- In Supabase dashboard -> SQL Editor
 -- Enable slow query log
 ALTER SYSTEM SET log_min_duration_statement = 100;
 SELECT pg_reload_conf();
-```
+\`\`\`
 
 ### Performance Monitoring
 
-```typescript
+\`\`\`typescript
 // Add to API routes
 async function measureQuery(label: string, fn: () => Promise<any>) {
   const start = performance.now()
@@ -358,11 +358,11 @@ async function measureQuery(label: string, fn: () => Promise<any>) {
   }
   return result
 }
-```
+\`\`\`
 
 ### Connection Pool Monitoring
 
-```typescript
+\`\`\`typescript
 // Monitor Supabase connection usage
 import { getSupabaseServer } from "@/lib/supabase-server"
 
@@ -376,13 +376,13 @@ async function checkConnectionHealth() {
     console.error("Connection health check failed:", error)
   }
 }
-```
+\`\`\`
 
 ## Phase 6: Security Hardening
 
 ### Validate All Inputs
 
-```typescript
+\`\`\`typescript
 import { z } from "zod"
 
 const OrderItemSchema = z.object({
@@ -392,11 +392,11 @@ const OrderItemSchema = z.object({
 
 // Use in API routes
 const items = OrderItemSchema.array().parse(request.body.items)
-```
+\`\`\`
 
 ### Rate Limiting
 
-```typescript
+\`\`\`typescript
 import { Ratelimit } from "@upstash/ratelimit"
 import { Redis } from "@upstash/redis"
 
@@ -410,13 +410,13 @@ export async function POST(request: NextRequest) {
   if (!success) return new Response("Rate limited", { status: 429 })
   // Continue with request
 }
-```
+\`\`\`
 
 ### Audit Logging
 
 All critical operations should log:
 
-```typescript
+\`\`\`typescript
 await logAuditEvent(
   "order_created",
   "orders",
@@ -424,35 +424,35 @@ await logAuditEvent(
   null,
   { order_number: order.order_number, total: order.total_amount }
 )
-```
+\`\`\`
 
 ## Common Issues & Solutions
 
 ### Issue: RLS Policies Blocking Legitimate Queries
 
 **Solution:** Check RLS policies match user's role and permissions
-```sql
+\`\`\`sql
 -- Test query
 SELECT * FROM products
 WHERE seller_id = current_user_id()
 AND status = 'active';
-```
+\`\`\`
 
 ### Issue: Slow Product Listing
 
 **Solution:** Ensure indexes exist
-```sql
+\`\`\`sql
 -- Add missing indexes
 CREATE INDEX idx_products_status_created ON products(status, created_at DESC);
-```
+\`\`\`
 
 ### Issue: Inventory Race Conditions
 
 **Solution:** Use database-level locking
-```sql
+\`\`\`sql
 -- Already handled by reserve_product_inventory() function
 -- Uses SELECT FOR UPDATE
-```
+\`\`\`
 
 ## Migration Checklist
 
@@ -475,7 +475,7 @@ CREATE INDEX idx_products_status_created ON products(status, created_at DESC);
 
 ### Check Schema Health
 
-```sql
+\`\`\`sql
 -- List all tables
 \dt
 
@@ -487,16 +487,16 @@ FROM pg_tables WHERE schemaname='public';
 SELECT schemaname, tablename, indexname, idx_scan 
 FROM pg_stat_user_indexes 
 WHERE schemaname='public';
-```
+\`\`\`
 
 ### Validate RLS Policies
 
-```sql
+\`\`\`sql
 -- Check active RLS policies
 SELECT tablename, policyname, permissive, roles, qual 
 FROM pg_policies 
 WHERE schemaname='public';
-```
+\`\`\`
 
 ## Support
 

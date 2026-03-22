@@ -2,7 +2,7 @@
 
 ## Layout Wireframe
 
-```
+\`\`\`
 ┌─────────────────────────────────────────────────────────────┐
 │                      NAVIGATION BAR                         │
 │  Logo          Menu Items              Login/Signup         │
@@ -90,12 +90,12 @@
 ┌─────────────────────────────────────────────────────────────┐
 │                      FOOTER                                 │
 └─────────────────────────────────────────────────────────────┘
-```
+\`\`\`
 
 ## Color Swatches
 
 ### Primary Palette
-```
+\`\`\`
 Primary Teal-Blue
 ┌─────────────────────┐
 │ hsl(195 100% 50%)   │ #00BFFF
@@ -123,12 +123,12 @@ Foreground Dark
 │ Used for: Text,     │
 │ headings            │
 └─────────────────────┘
-```
+\`\`\`
 
 ## Component Examples
 
 ### Hero Section
-```
+\`\`\`
 ┌────────────────────────────────────────┐
 │ [Animated blur shapes in background]   │
 │                                        │
@@ -143,10 +143,10 @@ Foreground Dark
 │                                        │
 │ 50K+ Users  | 500+ Events | $5M+ Sales │
 └────────────────────────────────────────┘
-```
+\`\`\`
 
 ### Stream Card
-```
+\`\`\`
 ┌─────────────────────────────────┐
 │ [LIVE]  [-30%]                 │
 │                                │
@@ -163,10 +163,10 @@ Foreground Dark
 │                                │
 │ 🛍️ 12 Products | [▶ Watch]     │
 └─────────────────────────────────┘
-```
+\`\`\`
 
 ### Category Button
-```
+\`\`\`
 ┌──────────────────┐
 │   ✨             │
 │   Beauty         │
@@ -180,10 +180,10 @@ Hover State:
 │   Explore now    │
 │ [border-primary] │
 └──────────────────┘
-```
+\`\`\`
 
 ### Countdown Timer
-```
+\`\`\`
 ┌──────────────────────┐
 │ [Dark Background]    │
 │                      │
@@ -195,10 +195,10 @@ Updates every second:
 2d 05h 03m 26s
 2d 05h 03m 25s
 ...
-```
+\`\`\`
 
 ### Chat Message
-```
+\`\`\`
 Normal Viewer:
 ┌────────────────────────────────┐
 │ Sarah M.                       │
@@ -211,11 +211,11 @@ Host Message:
 │ Thanks! It's my personal fave! │
 │ Get 20% off with code LIVE20  │
 └────────────────────────────────┘
-```
+\`\`\`
 
 ## Typography Hierarchy
 
-```
+\`\`\`
 H1 - 60px (Desktop)
 Shop Live, Shop Together
 ├── H2 - 36px
@@ -230,12 +230,12 @@ Small - 14px
 
 Extra Small - 12px
 └── Timestamps, badges
-```
+\`\`\`
 
 ## Interactive States
 
 ### Button States
-```
+\`\`\`
 Default:
 [  Start Shopping Live  ]
 
@@ -249,10 +249,10 @@ Active:
 Disabled:
 [  Start Shopping Live  ]  ← Opacity reduced
                              Cursor not-allowed
-```
+\`\`\`
 
 ### Card States
-```
+\`\`\`
 Default:
 ┌─────────────────┐
 │  Stream Card    │
@@ -265,10 +265,10 @@ Hover:
 │  (shadow ↑↑)    │ ← Shadow larger
 │  (brightness ↓) │
 └─────────────────┘
-```
+\`\`\`
 
 ### Category Button States
-```
+\`\`\`
 Default:
 ┌──────────┐
 │ Beauty   │
@@ -283,11 +283,11 @@ Selected:
 ┌──────────┐
 │ Beauty   │
 └──────────┘ border-primary, bg-primary/10
-```
+\`\`\`
 
 ## Animation Timings
 
-```
+\`\`\`
 Float-up Animation
 Duration: 2s
 Easing: ease-out
@@ -316,11 +316,11 @@ Pattern:
   0%:   box-shadow: 0 0 0 0 rgba(primary, 0.7)
   70%:  box-shadow: 0 0 0 10px rgba(primary, 0)
   100%: box-shadow: 0 0 0 0 rgba(primary, 0)
-```
+\`\`\`
 
 ## Responsive Grid Changes
 
-```
+\`\`\`
 Mobile (< 768px):
 - Single column layouts
 - 2x2 category grid
@@ -338,11 +338,11 @@ Desktop (> 1024px):
 - 4x1 category layout
 - Side-by-side layouts
 - Maximum content width
-```
+\`\`\`
 
 ## Spacing Scale
 
-```
+\`\`\`
 Padding/Margin/Gap:
 - xs: 0.25rem (4px)
 - sm: 0.5rem (8px)
@@ -359,11 +359,11 @@ Common Patterns:
 - Content gap: gap-6
 
 Max Content Width: 1280px (7xl)
-```
+\`\`\`
 
 ## Visual Depth
 
-```
+\`\`\`
 Shadows:
 - Light: shadow-sm (subtle)
 - Medium: shadow-lg (hover state)
@@ -379,11 +379,11 @@ Opacity Layers:
 - Focus: 0.9 (slight dim)
 - Disabled: 0.5 (faded)
 - Subtle: 0.1-0.2 (almost invisible)
-```
+\`\`\`
 
 ## Accessibility Visual Indicators
 
-```
+\`\`\`
 Focus State (Keyboard Navigation):
 ┌──────────────┐
 │ Button Text  │ ← Ring: 2px solid primary
@@ -398,12 +398,12 @@ Color Indicators:
 High Contrast Text:
 Dark text on light background (ratio 4.5:1+)
 Light text on dark background (ratio 4.5:1+)
-```
+\`\`\`
 
 ## Example Responsive Behavior
 
 ### Hero Section Mobile
-```
+\`\`\`
 ┌─────────────┐
 │   Content   │
 │  (centered) │
@@ -412,19 +412,19 @@ Light text on dark background (ratio 4.5:1+)
 │   Image     │
 │  (full w)   │
 └─────────────┘
-```
+\`\`\`
 
 ### Hero Section Desktop
-```
+\`\`\`
 ┌──────────────────────────────────────┐
 │  Content      │      Image           │
 │   (left)      │      (right)         │
 │               │                      │
 └──────────────────────────────────────┘
-```
+\`\`\`
 
 ### Stream Grid Mobile
-```
+\`\`\`
 ┌───────────┐
 │  Stream 1 │
 └───────────┘
@@ -434,18 +434,18 @@ Light text on dark background (ratio 4.5:1+)
 ┌───────────┐
 │  Stream 3 │
 └───────────┘
-```
+\`\`\`
 
 ### Stream Grid Desktop
-```
+\`\`\`
 ┌─────────┬─────────┬─────────┐
 │ Stream1 │ Stream2 │ Stream3 │
 └─────────┴─────────┴─────────┘
-```
+\`\`\`
 
 ## Navigation Hierarchy
 
-```
+\`\`\`
 Primary Navigation:
 - Home (Current)
 - Live Showcase
@@ -464,12 +464,12 @@ Mobile Menu:
 - Slide-out menu
 - Navigation items
 - User actions
-```
+\`\`\`
 
 ## Visual Feedback Examples
 
 ### Hover States
-```
+\`\`\`
 Button Hover:
 [Normal]  →  [Darker]  →  [Darker + Shadow]
 
@@ -478,10 +478,10 @@ Card Hover:
 
 Link Hover:
 [Normal]  →  [Color]  →  [Underline]
-```
+\`\`\`
 
 ### Loading States (Future)
-```
+\`\`\`
 Skeleton:
 ┌─────────────┐
 │ ▫️▫️▫️▫️▫️▫️▫️ │ ← Shimmer effect
@@ -489,10 +489,10 @@ Skeleton:
 
 Spinner:
     ↻ Loading...
-```
+\`\`\`
 
 ### Empty States (Future)
-```
+\`\`\`
 ┌──────────────────────┐
 │                      │
 │      📭 Empty        │
@@ -501,7 +501,7 @@ Spinner:
 │                      │
 │  [Browse Categories] │
 └──────────────────────┘
-```
+\`\`\`
 
 ---
 

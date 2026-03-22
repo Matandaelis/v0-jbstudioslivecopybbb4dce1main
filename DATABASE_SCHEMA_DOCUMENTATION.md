@@ -430,11 +430,11 @@ See `/scripts/` directory:
 3. `03_triggers_and_functions.sql` - Automation
 
 Execute in order:
-```bash
+\`\`\`bash
 psql -U postgres -d database < 01_core_schema_migration.sql
 psql -U postgres -d database < 02_rls_policies_migration.sql
 psql -U postgres -d database < 03_triggers_and_functions.sql
-```
+\`\`\`
 
 ## Monitoring
 

@@ -219,7 +219,7 @@ Complete live shopping experience page.
 
 ### Spacing System
 
-```
+\`\`\`
 Base Unit: 1rem (16px)
 
 Gap Classes:
@@ -234,11 +234,11 @@ Padding:
 - p-4 → Standard (16px all sides)
 - px-4, py-2 → Directional (16px horizontal, 8px vertical)
 - p-6 → Larger elements (24px all sides)
-```
+\`\`\`
 
 ### Typography
 
-```
+\`\`\`
 Font Stack: Geist (sans-serif)
 
 Heading Sizes:
@@ -256,11 +256,11 @@ Font Weights:
 - Headings: Bold (700)
 - Emphasis: Semibold (600)
 - Body: Regular (400)
-```
+\`\`\`
 
 ### Shadow Hierarchy
 
-```
+\`\`\`
 sm:   0 1px 2px 0 rgb(0 0 0 / 0.05)
       → Subtle cards, borders
 
@@ -275,7 +275,7 @@ xl:   0 20px 25px -5px rgb(0 0 0 / 0.1)
 
 2xl:  0 25px 50px -12px rgb(0 0 0 / 0.25)
       → Prominent hover states
-```
+\`\`\`
 
 ---
 
@@ -283,7 +283,7 @@ xl:   0 20px 25px -5px rgb(0 0 0 / 0.1)
 
 ### Responsive Grid Strategy
 
-```jsx
+\`\`\`jsx
 // Products Grid Example
 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
   {/* 1 column on mobile, 2 on tablet, 3 on desktop */}
@@ -293,11 +293,11 @@ xl:   0 20px 25px -5px rgb(0 0 0 / 0.1)
 <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
   {/* Full width on mobile/tablet, 4 columns on desktop */}
 </div>
-```
+\`\`\`
 
 ### Touch-Friendly Design
 
-```jsx
+\`\`\`jsx
 // All buttons 44px minimum
 <button className="h-11 px-4">  /* 44px height */
 <button className="h-10 w-10">  /* 40px icon button (handle with padding) */
@@ -305,7 +305,7 @@ xl:   0 20px 25px -5px rgb(0 0 0 / 0.1)
 // Spacing for touch
 <div className="p-4 gap-4">      /* 16px padding/gaps */
 <div className="space-y-3">      /* 12px vertical spacing */
-```
+\`\`\`
 
 ### Performance Optimizations
 

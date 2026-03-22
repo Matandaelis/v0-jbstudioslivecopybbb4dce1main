@@ -8,7 +8,7 @@ The new live shopping homepage is located at `/app/page.tsx` and serves as the m
 
 ### Main Component Structure
 
-```typescript
+\`\`\`typescript
 HomePage Component
 ├── Hero Section (Hero content + visual)
 ├── Streaming Now (Live streams grid)
@@ -17,14 +17,14 @@ HomePage Component
 ├── Real-Time Interaction Preview (Chat showcase)
 ├── Trust & Social Proof (Metrics)
 └── CTA Section (Final conversion point)
-```
+\`\`\`
 
 ### Key Features
 
 #### 1. Dynamic Countdown Timer
 Real-time countdown timer that updates every second for upcoming events.
 
-```typescript
+\`\`\`typescript
 useEffect(() => {
   const updateCountdowns = () => {
     // Calculates time remaining for each event
@@ -36,7 +36,7 @@ useEffect(() => {
   const interval = setInterval(updateCountdowns, 1000)
   return () => clearInterval(interval)
 }, [])
-```
+\`\`\`
 
 **Usage:**
 - Automatically calculates and displays time remaining
@@ -46,12 +46,12 @@ useEffect(() => {
 #### 2. Category Selection
 Interactive category buttons with visual feedback.
 
-```typescript
+\`\`\`typescript
 const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
 
 // Toggle category on click
 onClick={() => setSelectedCategory(isSelected ? null : category.name)}
-```
+\`\`\`
 
 **Behavior:**
 - Click to select/deselect category
@@ -70,7 +70,7 @@ Multiple CSS animations create visual depth and engagement.
 ### Data Structure
 
 #### LIVE_STREAMS Array
-```typescript
+\`\`\`typescript
 interface LiveStream {
   id: number
   title: string
@@ -81,10 +81,10 @@ interface LiveStream {
   products: number
   discount: number
 }
-```
+\`\`\`
 
 #### UPCOMING_EVENTS Array
-```typescript
+\`\`\`typescript
 interface UpcomingEvent {
   id: number
   title: string
@@ -92,16 +92,16 @@ interface UpcomingEvent {
   startTime: Date
   image: string
 }
-```
+\`\`\`
 
 #### CATEGORIES Array
-```typescript
+\`\`\`typescript
 interface Category {
   name: string
   icon: React.ComponentType
   color: string // Gradient class
 }
-```
+\`\`\`
 
 ## Design System Integration
 
@@ -149,7 +149,7 @@ interface Category {
 ### Changing Hero Content
 Edit the hero section in `HomePage` component:
 
-```typescript
+\`\`\`typescript
 // Hero headline
 <h1>Shop Live,<span>Shop Together</span></h1>
 
@@ -158,12 +158,12 @@ Edit the hero section in `HomePage` component:
 
 // CTA buttons
 <Button>Start Shopping Live</Button>
-```
+\`\`\`
 
 ### Adding/Editing Live Streams
 Modify the `LIVE_STREAMS` constant:
 
-```typescript
+\`\`\`typescript
 const LIVE_STREAMS = [
   {
     id: 1,
@@ -177,12 +177,12 @@ const LIVE_STREAMS = [
   },
   // ... more streams
 ]
-```
+\`\`\`
 
 ### Updating Categories
 Edit `CATEGORIES` array:
 
-```typescript
+\`\`\`typescript
 const CATEGORIES = [
   { 
     name: "New Category",
@@ -190,12 +190,12 @@ const CATEGORIES = [
     color: "from-color-1 to-color-2"
   },
 ]
-```
+\`\`\`
 
 ### Modifying Upcoming Events
 Update `UPCOMING_EVENTS` with new dates:
 
-```typescript
+\`\`\`typescript
 const UPCOMING_EVENTS = [
   {
     id: 1,
@@ -205,7 +205,7 @@ const UPCOMING_EVENTS = [
     image: "/path/to/image.jpg",
   },
 ]
-```
+\`\`\`
 
 ## Performance Optimization
 
@@ -262,12 +262,12 @@ const UPCOMING_EVENTS = [
 ## SEO Optimization
 
 ### Meta Tags
-```typescript
+\`\`\`typescript
 export const metadata: Metadata = {
   title: "Shop Live, Shop Together | Live Shopping Platform",
   description: "Experience the future of shopping with live streaming deals...",
 }
-```
+\`\`\`
 
 ### Structured Content
 - Proper heading hierarchy (H1 → H2 → H3)
@@ -320,11 +320,11 @@ export const metadata: Metadata = {
 No special environment variables required for the homepage.
 
 ### Build Process
-```bash
+\`\`\`bash
 npm install
 npm run build
 npm run start
-```
+\`\`\`
 
 ## Troubleshooting
 
@@ -347,16 +347,16 @@ npm run start
 ## Code Examples
 
 ### Adding a New Section
-```typescript
+\`\`\`typescript
 <section className="py-16 md:py-24 bg-white dark:bg-black/20">
   <div className="max-w-7xl mx-auto px-4 md:px-6">
     {/* Content here */}
   </div>
 </section>
-```
+\`\`\`
 
 ### Creating Interactive Element
-```typescript
+\`\`\`typescript
 const [state, setState] = useState(false)
 
 return (
@@ -364,15 +364,15 @@ return (
     {state ? "Active" : "Inactive"}
   </button>
 )
-```
+\`\`\`
 
 ### Using Icons
-```typescript
+\`\`\`typescript
 import { Play, Heart } from "lucide-react"
 
 <Play className="w-5 h-5 mr-2" />
 <Heart className="w-4 h-4" />
-```
+\`\`\`
 
 ## Next Steps
 

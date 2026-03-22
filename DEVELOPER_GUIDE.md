@@ -20,7 +20,7 @@
 ### Using New Components
 
 #### ProductCard Component
-```jsx
+\`\`\`jsx
 import ProductCard from "@/components/product-card"
 
 export default function ProductGrid() {
@@ -53,10 +53,10 @@ export default function ProductGrid() {
     </div>
   )
 }
-```
+\`\`\`
 
 #### ReactionsPanel Component
-```jsx
+\`\`\`jsx
 import ReactionsPanel from "@/components/livekit/reactions-panel"
 import { useState } from "react"
 
@@ -76,10 +76,10 @@ export default function StreamWithReactions() {
     />
   )
 }
-```
+\`\`\`
 
 #### ViewersList Component
-```jsx
+\`\`\`jsx
 import ViewersList from "@/components/livekit/viewers-list"
 
 export default function StreamInfo() {
@@ -97,7 +97,7 @@ export default function StreamInfo() {
     />
   )
 }
-```
+\`\`\`
 
 ---
 
@@ -105,7 +105,7 @@ export default function StreamInfo() {
 
 ### Using Color Tokens
 
-```jsx
+\`\`\`jsx
 // Primary (Teal-Blue) - Brand color
 <button className="bg-primary text-primary-foreground hover:bg-primary/90">
   Primary Button
@@ -128,11 +128,11 @@ export default function StreamInfo() {
 // Muted elements
 <span className="text-muted-foreground">Muted text</span>
 <div className="bg-muted">Muted background</div>
-```
+\`\`\`
 
 ### Using Shadow Tokens
 
-```jsx
+\`\`\`jsx
 // Subtle shadow
 <div className="shadow-sm">Subtle</div>
 
@@ -144,11 +144,11 @@ export default function StreamInfo() {
 
 // Extra large shadow (prominent hover states)
 <div className="shadow-2xl">Extra Large</div>
-```
+\`\`\`
 
 ### Using Spacing Tokens
 
-```jsx
+\`\`\`jsx
 // Gap classes (space between children)
 <div className="flex gap-4">Items with 1rem spacing</div>
 <div className="grid gap-6">Grid with 1.5rem gaps</div>
@@ -164,24 +164,24 @@ export default function StreamInfo() {
 // Space stacking
 <div className="space-y-3">Vertical spacing between children</div>
 <div className="space-x-4">Horizontal spacing between children</div>
-```
+\`\`\`
 
 ---
 
 ## Responsive Design Patterns
 
 ### Mobile-First Grid
-```jsx
+\`\`\`jsx
 // Mobile: 1 column, Tablet: 2 columns, Desktop: 3 columns
 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
   {items.map(item => (
     <div key={item.id}>{item.name}</div>
   ))}
 </div>
-```
+\`\`\`
 
 ### Hide/Show Elements by Screen Size
-```jsx
+\`\`\`jsx
 // Hide on mobile, show on desktop
 <div className="hidden lg:block">
   Large screen only
@@ -196,10 +196,10 @@ export default function StreamInfo() {
 <div className="flex flex-col lg:flex-row">
   Mobile: column layout, Desktop: row layout
 </div>
-```
+\`\`\`
 
 ### Responsive Font Sizes
-```jsx
+\`\`\`jsx
 <h1 className="text-2xl sm:text-3xl lg:text-4xl">
   Responsive heading
 </h1>
@@ -207,10 +207,10 @@ export default function StreamInfo() {
 <p className="text-sm sm:text-base lg:text-lg">
   Responsive body text
 </p>
-```
+\`\`\`
 
 ### Responsive Padding/Spacing
-```jsx
+\`\`\`jsx
 <div className="p-2 sm:p-4 lg:p-6">
   Responsive padding: 8px → 16px → 24px
 </div>
@@ -218,7 +218,7 @@ export default function StreamInfo() {
 <div className="gap-2 sm:gap-4 lg:gap-6">
   Responsive gap: 8px → 16px → 24px
 </div>
-```
+\`\`\`
 
 ---
 
@@ -226,7 +226,7 @@ export default function StreamInfo() {
 
 ### Using Built-in Animations
 
-```jsx
+\`\`\`jsx
 // Float up (for reactions)
 <div className="animate-float-up">
   ❤️
@@ -246,10 +246,10 @@ export default function StreamInfo() {
 <div className="animate-pulse-ring">
   Active indicator
 </div>
-```
+\`\`\`
 
 ### Custom Animation Example
-```jsx
+\`\`\`jsx
 // Reaction animation
 const handleReaction = (emoji) => {
   const id = `reaction_${Date.now()}`
@@ -281,14 +281,14 @@ const handleReaction = (emoji) => {
     {reaction.emoji}
   </div>
 ))}
-```
+\`\`\`
 
 ---
 
 ## Common UI Patterns
 
 ### Button Variants
-```jsx
+\`\`\`jsx
 // Primary action (default)
 <Button>Add to Cart</Button>
 
@@ -306,10 +306,10 @@ const handleReaction = (emoji) => {
 
 // Link button
 <Button variant="link">More info</Button>
-```
+\`\`\`
 
 ### Card Layout
-```jsx
+\`\`\`jsx
 <Card className="overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-shadow">
   <div className="relative">
     <img src="" alt="" className="w-full h-48 object-cover" />
@@ -322,10 +322,10 @@ const handleReaction = (emoji) => {
     <Button className="w-full">Action</Button>
   </CardContent>
 </Card>
-```
+\`\`\`
 
 ### Modal/Dialog Pattern
-```jsx
+\`\`\`jsx
 import { AlertDialog, AlertDialogTrigger, AlertDialogContent } from "@/components/ui/alert-dialog"
 
 <AlertDialog>
@@ -341,7 +341,7 @@ import { AlertDialog, AlertDialogTrigger, AlertDialogContent } from "@/component
     </div>
   </AlertDialogContent>
 </AlertDialog>
-```
+\`\`\`
 
 ---
 
@@ -360,19 +360,19 @@ When building new components:
 - [ ] Animations respect `prefers-reduced-motion`
 
 ### Testing Accessibility
-```bash
+\`\`\`bash
 # Install Axe DevTools Chrome Extension
 # Test with built-in color contrast checker
 # Test keyboard navigation (Tab, Enter, Escape)
 # Test with screen reader (NVDA, JAWS, or Safari VoiceOver)
-```
+\`\`\`
 
 ---
 
 ## Performance Tips
 
 ### Image Optimization
-```jsx
+\`\`\`jsx
 // Use next/image for optimization
 import Image from "next/image"
 
@@ -384,10 +384,10 @@ import Image from "next/image"
   priority={false} // Set true for above-fold images
   loading="lazy"
 />
-```
+\`\`\`
 
 ### Avoiding Layout Shift
-```jsx
+\`\`\`jsx
 // Reserve space for images with aspect ratio
 <div className="aspect-video bg-muted">
   <img src="" alt="" className="w-full h-full object-cover" />
@@ -397,10 +397,10 @@ import Image from "next/image"
 <div className="aspect-square">
   <img src="" alt="" />
 </div>
-```
+\`\`\`
 
 ### Efficient CSS
-```jsx
+\`\`\`jsx
 // Use gap instead of margin between items
 <div className="flex gap-4">  ✅ Good
 <div className="flex">       ❌ Avoid
@@ -409,7 +409,7 @@ import Image from "next/image"
 // Use semantic tokens instead of hardcoded colors
 <button className="bg-primary">      ✅ Good
 <button className="bg-blue-500">    ❌ Avoid
-```
+\`\`\`
 
 ---
 
@@ -440,7 +440,7 @@ import Image from "next/image"
 ## Code Examples
 
 ### Complete Product Showcase Section
-```jsx
+\`\`\`jsx
 "use client"
 
 import { useState } from "react"
@@ -507,7 +507,7 @@ export default function ProductShowcase() {
     </section>
   )
 }
-```
+\`\`\`
 
 ---
 

@@ -38,7 +38,7 @@
 
 ## 📁 Project Structure
 
-```
+\`\`\`
 /
 ├── app/
 │   ├── live-shopping/          # NEW: Main live shopping page
@@ -65,26 +65,26 @@
 ├── DEVELOPER_GUIDE.md           # NEW: Developer reference
 └── README_UI_REDESIGN.md       # This file
 
-```
+\`\`\`
 
 ---
 
 ## 🚀 Quick Start
 
 ### View the Live Shopping Page
-```
+\`\`\`
 Navigate to: http://localhost:3000/live-shopping
-```
+\`\`\`
 
 ### View the Updated Showcase
-```
+\`\`\`
 Navigate to: http://localhost:3000/live-showcase
-```
+\`\`\`
 
 ### Use New Components
 
 **ProductCard**
-```jsx
+\`\`\`jsx
 import ProductCard from "@/components/product-card"
 
 <ProductCard
@@ -101,20 +101,20 @@ import ProductCard from "@/components/product-card"
   onLike={(id) => {}}
   onSelect={(product) => {}}
 />
-```
+\`\`\`
 
 **ReactionsPanel**
-```jsx
+\`\`\`jsx
 import ReactionsPanel from "@/components/livekit/reactions-panel"
 
 <ReactionsPanel
   onReaction={(emoji) => console.log(emoji)}
   reactions={reactions}
 />
-```
+\`\`\`
 
 **ViewersList**
-```jsx
+\`\`\`jsx
 import ViewersList from "@/components/livekit/viewers-list"
 
 <ViewersList
@@ -122,7 +122,7 @@ import ViewersList from "@/components/livekit/viewers-list"
   totalViewers={3421}
   maxDisplay={5}
 />
-```
+\`\`\`
 
 ---
 
@@ -139,11 +139,11 @@ import ViewersList from "@/components/livekit/viewers-list"
 | Card | `hsl(0 0% 100%)` | Card backgrounds |
 
 ### Responsive Breakpoints
-```
+\`\`\`
 Mobile (default)    - Single column layouts
 Tablet (sm: 640px)  - 2-column grids
 Desktop (lg: 1024px) - 3+ column grids
-```
+\`\`\`
 
 ### Typography
 - **Font**: Geist (sans-serif)
@@ -251,7 +251,7 @@ Desktop (lg: 1024px) - 3+ column grids
 ## 🔄 Mobile-First Approach
 
 ### Layout Strategy
-```jsx
+\`\`\`jsx
 // Default: Mobile layout
 <div className="grid grid-cols-1">
 
@@ -260,10 +260,10 @@ Desktop (lg: 1024px) - 3+ column grids
 
 // Desktop: 3+ columns
 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-```
+\`\`\`
 
 ### Responsive Utilities
-```jsx
+\`\`\`jsx
 // Hide/show by screen
 <div className="hidden lg:block">Desktop only</div>
 <div className="lg:hidden">Mobile/Tablet</div>
@@ -273,19 +273,19 @@ Desktop (lg: 1024px) - 3+ column grids
 
 // Responsive text
 <h1 className="text-2xl sm:text-3xl lg:text-4xl">Heading</h1>
-```
+\`\`\`
 
 ---
 
 ## 🎬 Animation System
 
 ### Built-in Animations
-```jsx
+\`\`\`jsx
 <div className="animate-float-up">   {/* Reactions */}
 <div className="animate-fade-in">    {/* Messages */}
 <div className="animate-slide-in">   {/* Panels */}
 <div className="animate-pulse-ring"> {/* Indicators */}
-```
+\`\`\`
 
 ### Custom Implementation
 All animations are CSS-based for optimal performance:
@@ -300,30 +300,30 @@ All animations are CSS-based for optimal performance:
 
 ### Step 1: Update Existing Pages
 Replace old color references with design tokens:
-```jsx
+\`\`\`jsx
 // Before
 className="bg-slate-900 text-white"
 
 // After
 className="bg-primary text-primary-foreground"
-```
+\`\`\`
 
 ### Step 2: Use New Components
 Import and use new components in your pages:
-```jsx
+\`\`\`jsx
 import ProductCard from "@/components/product-card"
 import ReactionsPanel from "@/components/livekit/reactions-panel"
-```
+\`\`\`
 
 ### Step 3: Maintain Consistency
 Always use semantic design tokens for new features:
-```jsx
+\`\`\`jsx
 // ✅ Good
 bg-primary, bg-card, text-foreground
 
 // ❌ Avoid
 bg-blue-500, bg-white, text-black
-```
+\`\`\`
 
 ---
 

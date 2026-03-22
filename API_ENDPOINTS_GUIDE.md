@@ -7,9 +7,9 @@ This document describes all required API endpoints for the enhanced live shoppin
 ## Authentication & Authorization
 
 All endpoints require authentication via Supabase JWT token. Include in header:
-```
+\`\`\`
 Authorization: Bearer {jwt_token}
-```
+\`\`\`
 
 Role-based access control is enforced at the database level via RLS policies.
 
@@ -26,7 +26,7 @@ List all active products with pagination and filtering.
 - `sort`: 'newest' | 'price_asc' | 'price_desc' | 'popular' (default: newest)
 
 **Response:**
-```json
+\`\`\`json
 {
   "data": [
     {
@@ -48,13 +48,13 @@ List all active products with pagination and filtering.
     "total": 500
   }
 }
-```
+\`\`\`
 
 ### POST /api/products
 Create a new product (sellers/admins only).
 
 **Request Body:**
-```json
+\`\`\`json
 {
   "title": "Product Name",
   "description": "Long description",
@@ -66,7 +66,7 @@ Create a new product (sellers/admins only).
   "images": ["url1", "url2"],
   "thumbnail_url": "url"
 }
-```
+\`\`\`
 
 **Response:** Product object with created metadata
 
@@ -74,7 +74,7 @@ Create a new product (sellers/admins only).
 Get detailed product information including reviews and inventory.
 
 **Response:**
-```json
+\`\`\`json
 {
   "product": {...},
   "inventory": {
@@ -84,7 +84,7 @@ Get detailed product information including reviews and inventory.
   },
   "reviews": [...]
 }
-```
+\`\`\`
 
 ### PUT /api/products/:productId
 Update product details (seller/admin only).
@@ -98,7 +98,7 @@ Soft delete a product (seller/admin only).
 Create a new order.
 
 **Request Body:**
-```json
+\`\`\`json
 {
   "stream_id": "uuid (optional)",
   "items": [
@@ -117,10 +117,10 @@ Create a new order.
   },
   "billing_address": {...}
 }
-```
+\`\`\`
 
 **Response:**
-```json
+\`\`\`json
 {
   "id": "uuid",
   "order_number": "ORD-001234",
@@ -131,7 +131,7 @@ Create a new order.
   "total_amount": 263.97,
   "items": [...]
 }
-```
+\`\`\`
 
 ### GET /api/orders
 List user's orders (buyers/admins).
@@ -156,33 +156,33 @@ Cancel an order.
 Create Stripe payment intent for an order.
 
 **Request Body:**
-```json
+\`\`\`json
 {
   "order_id": "uuid",
   "payment_method": "card"
 }
-```
+\`\`\`
 
 **Response:**
-```json
+\`\`\`json
 {
   "client_secret": "pi_xxxxx",
   "payment_intent_id": "pi_xxxxx",
   "amount": 26397,
   "currency": "usd"
 }
-```
+\`\`\`
 
 ### POST /api/payments/confirm
 Confirm payment after Stripe processing.
 
 **Request Body:**
-```json
+\`\`\`json
 {
   "payment_intent_id": "pi_xxxxx",
   "order_id": "uuid"
 }
-```
+\`\`\`
 
 ### GET /api/payments/:paymentId
 Get payment details (user/admin only).
@@ -193,7 +193,7 @@ Get payment details (user/admin only).
 Create a product review (verified buyers only).
 
 **Request Body:**
-```json
+\`\`\`json
 {
   "product_id": "uuid",
   "order_item_id": "uuid (optional but recommended)",
@@ -202,7 +202,7 @@ Create a product review (verified buyers only).
   "content": "Detailed review...",
   "images": ["url1", "url2"]
 }
-```
+\`\`\`
 
 ### GET /api/products/:productId/reviews
 Get approved reviews for a product.
@@ -237,7 +237,7 @@ Delete notification.
 Get seller dashboard metrics.
 
 **Response:**
-```json
+\`\`\`json
 {
   "total_sales": 50000.00,
   "total_orders": 250,
@@ -247,7 +247,7 @@ Get seller dashboard metrics.
   "commission_rate": 15.00,
   "pending_commissions": 2500.00
 }
-```
+\`\`\`
 
 ### GET /api/sellers/products
 List seller's products.
@@ -256,13 +256,13 @@ List seller's products.
 Update product inventory.
 
 **Request Body:**
-```json
+\`\`\`json
 {
   "quantity_available": 100,
   "low_stock_threshold": 10,
   "reorder_point": 5
 }
-```
+\`\`\`
 
 ### GET /api/sellers/commissions
 List seller's commissions.
@@ -276,14 +276,14 @@ List seller's commissions.
 Request a payout.
 
 **Request Body:**
-```json
+\`\`\`json
 {
   "amount": 5000.00,
   "payout_method": "stripe",
   "period_start": "2024-01-01",
   "period_end": "2024-01-31"
 }
-```
+\`\`\`
 
 ## Admin API
 
@@ -300,13 +300,13 @@ List all users with filters.
 Update user role and permissions.
 
 **Request Body:**
-```json
+\`\`\`json
 {
   "role": "seller",
   "status": "active",
   "commission_rate": 15.00
 }
-```
+\`\`\`
 
 ### GET /api/admin/analytics
 Get platform analytics and reports.
@@ -330,7 +330,7 @@ View audit logs.
 
 All endpoints return errors in this format:
 
-```json
+\`\`\`json
 {
   "error": {
     "code": "PRODUCT_NOT_FOUND",
@@ -338,7 +338,7 @@ All endpoints return errors in this format:
     "details": {...}
   }
 }
-```
+\`\`\`
 
 Common status codes:
 - 200: Success
@@ -359,11 +359,11 @@ API endpoints are rate-limited per user:
 - Admin endpoints: 60 requests per minute
 
 Remaining rate limit info is returned in response headers:
-```
+\`\`\`
 X-RateLimit-Limit: 100
 X-RateLimit-Remaining: 87
 X-RateLimit-Reset: 1234567890
-```
+\`\`\`
 
 ## Implementation Notes
 
