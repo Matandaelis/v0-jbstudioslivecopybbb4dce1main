@@ -4,11 +4,11 @@
 
 ### Migration Scripts (Execute in Order)
 
-```bash
+\`\`\`bash
 1. scripts/01_core_schema_migration.sql          # Tables + Indexes
 2. scripts/02_rls_policies_migration.sql         # Security Policies
 3. scripts/03_triggers_and_functions.sql         # Automation
-```
+\`\`\`
 
 ### Documentation Files
 
@@ -87,18 +87,18 @@
 
 ## Role-Based Access
 
-```
+\`\`\`
 Admin         → Manage users, view all data, moderate, analytics
 Seller        → Create/edit products, manage own orders, view commissions
 Buyer         → Browse, purchase, review, chat
 Affiliate     → Track commissions, manage referrals
 Moderator     → Moderate chat, manage viewers
-```
+\`\`\`
 
 ## Quick API Examples
 
 ### Create Product
-```typescript
+\`\`\`typescript
 POST /api/products
 {
   "title": "Product Name",
@@ -106,10 +106,10 @@ POST /api/products
   "category": "beauty",
   "images": ["url1", "url2"]
 }
-```
+\`\`\`
 
 ### Create Order
-```typescript
+\`\`\`typescript
 POST /api/orders
 {
   "items": [
@@ -117,10 +117,10 @@ POST /api/orders
   ],
   "shipping_address": {...}
 }
-```
+\`\`\`
 
 ### Submit Review
-```typescript
+\`\`\`typescript
 POST /api/reviews
 {
   "product_id": "uuid",
@@ -128,18 +128,18 @@ POST /api/reviews
   "title": "Great!",
   "content": "Detailed review..."
 }
-```
+\`\`\`
 
 ### Get Seller Dashboard
-```typescript
+\`\`\`typescript
 GET /api/sellers/dashboard
-```
+\`\`\`
 
 ## Database Operations
 
 ### Using Helper Functions
 
-```typescript
+\`\`\`typescript
 import { 
   createProduct, 
   createOrder, 
@@ -158,7 +158,7 @@ const fullOrder = await getOrderWithItems(orderId)
 
 // Reserve inventory
 const reserved = await reserveInventory(productId, quantity)
-```
+\`\`\`
 
 ## RLS Policy Summary
 
@@ -183,15 +183,15 @@ const reserved = await reserveInventory(productId, quantity)
 ## Common Queries
 
 ### Find Low Stock Products
-```sql
+\`\`\`sql
 SELECT p.* FROM products p
 JOIN product_inventory pi ON p.id = pi.product_id
 WHERE pi.quantity_available <= pi.low_stock_threshold
 ORDER BY pi.quantity_available ASC;
-```
+\`\`\`
 
 ### Get Seller Dashboard Stats
-```sql
+\`\`\`sql
 SELECT 
   COUNT(DISTINCT o.id) as total_orders,
   SUM(oi.final_price) as total_sales,
@@ -200,16 +200,16 @@ FROM orders o
 JOIN order_items oi ON o.id = oi.order_id
 LEFT JOIN product_reviews pr ON oi.product_id = pr.product_id
 WHERE oi.seller_id = $1;
-```
+\`\`\`
 
 ### Calculate Pending Commissions
-```sql
+\`\`\`sql
 SELECT 
   SUM(commission_amount) as pending_total,
   COUNT(*) as pending_count
 FROM commissions
 WHERE user_id = $1 AND status = 'pending';
-```
+\`\`\`
 
 ## Migration Checklist
 
@@ -249,21 +249,21 @@ WHERE user_id = $1 AND status = 'pending';
 ## Connection Strings
 
 ### Supabase
-```
+\`\`\`
 postgresql://[user]:[password]@[host]:5432/postgres?schema=public
-```
+\`\`\`
 
 ### Environment Variables
-```
+\`\`\`
 NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 SUPABASE_SERVICE_ROLE_KEY=
-```
+\`\`\`
 
 ## Performance Monitoring
 
 ### Check Query Performance
-```sql
+\`\`\`sql
 SELECT 
   query,
   mean_time,
@@ -272,10 +272,10 @@ SELECT
 FROM pg_stat_statements
 WHERE mean_time > 100
 ORDER BY mean_time DESC;
-```
+\`\`\`
 
 ### Check Index Usage
-```sql
+\`\`\`sql
 SELECT 
   schemaname,
   tablename,
@@ -285,17 +285,17 @@ SELECT
   idx_tup_fetch
 FROM pg_stat_user_indexes
 ORDER BY idx_scan DESC;
-```
+\`\`\`
 
 ### Check Table Sizes
-```sql
+\`\`\`sql
 SELECT 
   tablename,
   pg_size_pretty(pg_total_relation_size(schemaname||'.'||tablename))
 FROM pg_tables
 WHERE schemaname='public'
 ORDER BY pg_total_relation_size(schemaname||'.'||tablename) DESC;
-```
+\`\`\`
 
 ## Next Steps
 

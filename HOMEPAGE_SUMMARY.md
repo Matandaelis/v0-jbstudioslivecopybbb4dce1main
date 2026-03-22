@@ -177,7 +177,7 @@ A complete redesign and implementation of the live shopping platform homepage, t
 
 ## File Structure
 
-```
+\`\`\`
 app/
 ├── page.tsx                    ← Main homepage (NEW)
 ├── layout.tsx                  ← Updated metadata
@@ -196,7 +196,7 @@ Documentation/
 ├── HOMEPAGE_FEATURES.md        ← Feature guide (NEW)
 ├── HOMEPAGE_IMPLEMENTATION.md  ← Implementation guide (NEW)
 └── HOMEPAGE_SUMMARY.md         ← Overview (this file)
-```
+\`\`\`
 
 ## Integration Points
 

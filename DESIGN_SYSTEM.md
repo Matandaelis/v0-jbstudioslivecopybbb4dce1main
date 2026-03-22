@@ -54,11 +54,11 @@ The platform uses a modern, vibrant color scheme optimized for engagement and co
 ## Mobile-First Layout Strategy
 
 ### Grid System
-```
+\`\`\`
 Mobile (default): 1 column
 Tablet (sm): 2 columns  
 Desktop (lg): 3+ columns
-```
+\`\`\`
 
 ### Responsive Spacing
 - **Mobile**: Condensed spacing (gap-3 to gap-4)
@@ -99,21 +99,21 @@ Desktop (lg): 3+ columns
 
 ### Float Up Animation
 Reactions float upward and fade out over 2 seconds:
-```css
+\`\`\`css
 @keyframes float-up {
   0% { opacity: 1; transform: translateY(0) scale(1); }
   100% { opacity: 0; transform: translateY(-100px) scale(0.5); }
 }
-```
+\`\`\`
 
 ### Fade In Animation
 Messages fade in with slight upward movement:
-```css
+\`\`\`css
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
-```
+\`\`\`
 
 ## Accessibility Features
 
@@ -126,25 +126,25 @@ Messages fade in with slight upward movement:
 ## Implementation Guidelines
 
 ### Using Design Tokens
-```jsx
+\`\`\`jsx
 // ✅ Use semantic tokens
 <div className="bg-background text-foreground">
 <button className="bg-primary text-primary-foreground">
-```
+\`\`\`
 
-```jsx
+\`\`\`jsx
 // ❌ Avoid direct colors
 <div className="bg-white text-black">
 <button className="bg-blue-500">
-```
+\`\`\`
 
 ### Responsive Patterns
-```jsx
+\`\`\`jsx
 // Mobile-first approach
 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
 <button className="w-full sm:w-auto">
 <img className="h-40 sm:h-48 lg:h-56">
-```
+\`\`\`
 
 ### Shadow Hierarchy
 - **sm**: Subtle cards and panels

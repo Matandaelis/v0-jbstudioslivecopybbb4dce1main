@@ -64,7 +64,7 @@ The centerpiece of the platform featuring:
 ### 3. **Design System Updates**
 
 #### Color Palette (Semantic Design Tokens)
-```css
+\`\`\`css
 Primary: hsl(195 100% 50%)     /* Teal-Blue - Brand Color */
 Secondary: hsl(15 100% 58%)    /* Coral - Accent Color */
 Foreground: hsl(0 0% 8%)       /* Dark Text */
@@ -72,7 +72,7 @@ Background: hsl(0 0% 98%)      /* Light Background */
 Muted: hsl(0 0% 92%)           /* Secondary Backgrounds */
 Card: hsl(0 0% 100%)           /* Card Backgrounds */
 Border: hsl(0 0% 88%)          /* Divider Lines */
-```
+\`\`\`
 
 #### Typography
 - **Font**: Geist (sans-serif) - Clean, modern, highly readable
@@ -90,32 +90,32 @@ Border: hsl(0 0% 88%)          /* Divider Lines */
 #### New Animations Added
 
 **Float Up** - For reaction emojis
-```css
+\`\`\`css
 0% { opacity: 1; transform: translateY(0) scale(1); }
 100% { opacity: 0; transform: translateY(-100px) scale(0.5); }
 Duration: 2s ease-out
-```
+\`\`\`
 
 **Fade In** - For chat messages
-```css
+\`\`\`css
 0% { opacity: 0; transform: translateY(10px); }
 100% { opacity: 1; transform: translateY(0); }
 Duration: 0.3s ease-out
-```
+\`\`\`
 
 **Slide In** - For panel entries
-```css
+\`\`\`css
 0% { opacity: 0; transform: translateX(-20px); }
 100% { opacity: 1; transform: translateX(0); }
 Duration: 0.4s ease-out
-```
+\`\`\`
 
 **Pulse Ring** - For active indicators
-```css
+\`\`\`css
 0% { box-shadow: 0 0 0 0 rgba(..., 0.7); }
 100% { box-shadow: 0 0 0 10px rgba(..., 0); }
 Duration: 2s infinite
-```
+\`\`\`
 
 ### 5. **Mobile-First Responsive Design**
 
@@ -185,7 +185,7 @@ Duration: 2s infinite
 
 ## File Structure
 
-```
+\`\`\`
 app/
   live-shopping/          # NEW: Main live shopping page
     page.tsx
@@ -199,12 +199,12 @@ components/
     chat-panel.tsx        # UPDATED: Enhanced with better styling
     reactions-panel.tsx   # NEW: Reaction button grid
     viewers-list.tsx      # NEW: Active viewers display
-```
+\`\`\`
 
 ## Usage Examples
 
 ### Using Product Card
-```jsx
+\`\`\`jsx
 import ProductCard from "@/components/product-card"
 
 <ProductCard
@@ -222,20 +222,20 @@ import ProductCard from "@/components/product-card"
   onLike={(id) => console.log("Liked:", id)}
   onSelect={(product) => console.log("Selected:", product)}
 />
-```
+\`\`\`
 
 ### Using Reactions Panel
-```jsx
+\`\`\`jsx
 import ReactionsPanel from "@/components/livekit/reactions-panel"
 
 <ReactionsPanel
   onReaction={(emoji) => console.log("Reaction:", emoji)}
   reactions={reactions}
 />
-```
+\`\`\`
 
 ### Using Viewers List
-```jsx
+\`\`\`jsx
 import ViewersList from "@/components/livekit/viewers-list"
 
 <ViewersList
@@ -243,13 +243,13 @@ import ViewersList from "@/components/livekit/viewers-list"
   totalViewers={3421}
   maxDisplay={5}
 />
-```
+\`\`\`
 
 ## Design Tokens Reference
 
 Access design tokens through Tailwind CSS classes:
 
-```jsx
+\`\`\`jsx
 // Colors
 className="bg-primary text-primary-foreground"      // Brand primary
 className="bg-secondary text-secondary-foreground"  // Brand secondary
@@ -270,7 +270,7 @@ className="rounded-xl"  // Extra rounded (1rem)
 // Spacing
 className="p-4 gap-4"   // Standard padding/gap
 className="px-6 py-4"   // Directional padding
-```
+\`\`\`
 
 ## Migration Guide
 

@@ -151,12 +151,12 @@ The newly redesigned live shopping homepage is a dynamic, engagement-focused lan
 ## Interactions & Animations
 
 ### Global Animations
-```css
+\`\`\`css
 - animate-float-up: Floating effect with scale and opacity change (2s)
 - animate-fade-in: Fade in from bottom (0.3s)
 - animate-slide-in: Slide in from left (0.4s)
 - animate-pulse-ring: Pulsing ring for live indicators
-```
+\`\`\`
 
 ### Hover Effects
 - Card scale: 105% on hover
@@ -290,7 +290,7 @@ The newly redesigned live shopping homepage is a dynamic, engagement-focused lan
 ## Code Structure
 
 ### Component Organization
-```
+\`\`\`
 app/
   page.tsx          # Main homepage
   layout.tsx        # Root layout
@@ -305,7 +305,7 @@ components/
 public/
   live-shopping-hero.jpg
   homepage-hero-banner.jpg
-```
+\`\`\`
 
 ### Key Dependencies
 - React 18+ (hooks support)
@@ -320,10 +320,10 @@ public/
 No additional environment variables required for homepage.
 
 ### Build Process
-```bash
+\`\`\`bash
 npm run build
 npm run start
-```
+\`\`\`
 
 ### Vercel Deployment
 - Auto-deploys on push to main branch

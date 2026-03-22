@@ -37,7 +37,7 @@ Click the play button on any stream card to enter the live shopping experience.
 
 ## Documentation Structure
 
-```
+\`\`\`
 📄 HOMEPAGE_README.md (this file)
    ├─ Overview and quick navigation
    ├─ What's new summary
@@ -81,48 +81,48 @@ Click the play button on any stream card to enter the live shopping experience.
    ├─ Responsive grid changes
    ├─ Spacing scale
    └─ Accessibility indicators
-```
+\`\`\`
 
 ## File Locations
 
 ### Main Component
-```
+\`\`\`
 /vercel/share/v0-project/app/page.tsx
-```
+\`\`\`
 
 ### Design System
-```
+\`\`\`
 /vercel/share/v0-project/app/globals.css
 /vercel/share/v0-project/app/layout.tsx (metadata)
-```
+\`\`\`
 
 ### Assets
-```
+\`\`\`
 /vercel/share/v0-project/public/live-shopping-hero.jpg
 /vercel/share/v0-project/public/homepage-hero-banner.jpg
-```
+\`\`\`
 
 ### Related Pages
-```
+\`\`\`
 /vercel/share/v0-project/app/live-showcase/page.tsx
 /vercel/share/v0-project/app/live-shopping/page.tsx
 /vercel/share/v0-project/app/live/[streamId]/page.tsx
-```
+\`\`\`
 
 ## Customization Guide
 
 ### Change Hero Headline
 In `app/page.tsx`, find the hero section:
-```typescript
+\`\`\`typescript
 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
   Shop Live,
   <span>Shop Together</span>
 </h1>
-```
+\`\`\`
 
 ### Update Live Streams
 Modify the `LIVE_STREAMS` array:
-```typescript
+\`\`\`typescript
 const LIVE_STREAMS = [
   {
     id: 1,
@@ -135,11 +135,11 @@ const LIVE_STREAMS = [
     discount: 20,
   },
 ]
-```
+\`\`\`
 
 ### Add Categories
 Update the `CATEGORIES` array:
-```typescript
+\`\`\`typescript
 const CATEGORIES = [
   { 
     name: "Category Name",
@@ -147,11 +147,11 @@ const CATEGORIES = [
     color: "from-color-1 to-color-2"
   },
 ]
-```
+\`\`\`
 
 ### Schedule Upcoming Events
 Edit the `UPCOMING_EVENTS` array:
-```typescript
+\`\`\`typescript
 const UPCOMING_EVENTS = [
   {
     id: 1,
@@ -161,7 +161,7 @@ const UPCOMING_EVENTS = [
     image: "/path/to/image.jpg",
   },
 ]
-```
+\`\`\`
 
 ## Key Features
 
@@ -295,16 +295,16 @@ WCAG AA compliant with:
 ## Development Tips
 
 ### Local Development
-```bash
+\`\`\`bash
 npm run dev
 # Visit http://localhost:3000
-```
+\`\`\`
 
 ### Building for Production
-```bash
+\`\`\`bash
 npm run build
 npm run start
-```
+\`\`\`
 
 ### Debugging
 Use browser DevTools to:

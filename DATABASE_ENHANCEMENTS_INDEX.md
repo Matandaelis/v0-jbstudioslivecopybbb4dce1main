@@ -184,37 +184,37 @@ This comprehensive database enhancement package transforms the live shopping pla
 ## 🚀 Implementation Roadmap
 
 ### Day 1-2: Schema Setup
-```
+\`\`\`
 1. Read: DATABASE_SCHEMA_DOCUMENTATION.md
 2. Execute: 3 migration scripts
 3. Verify: Tables, indexes, policies created
 4. Test: RLS policies working
-```
+\`\`\`
 
 ### Day 3-5: API Development
-```
+\`\`\`
 1. Read: API_ENDPOINTS_GUIDE.md
 2. Review: Examples in Implementation Guide
 3. Build: API route structure
 4. Test: Unit tests for each endpoint
-```
+\`\`\`
 
 ### Day 6-7: Integration
-```
+\`\`\`
 1. Update: TypeScript types
 2. Import: Helper functions
 3. Connect: Frontend components
 4. Test: End-to-end flows
-```
+\`\`\`
 
 ### Day 8-10: Testing & Launch
-```
+\`\`\`
 1. Unit tests (70%+ coverage)
 2. Integration tests
 3. Load testing (1000 concurrent)
 4. Staging deployment
 5. Production rollout
-```
+\`\`\`
 
 ## 📝 File Sizes & Content
 
@@ -267,7 +267,7 @@ This comprehensive database enhancement package transforms the live shopping pla
 
 ## 🔗 Key Relationships
 
-```
+\`\`\`
 users (from auth)
 ├── user_roles (1:1)
 ├── products (1:many) [as seller]
@@ -295,7 +295,7 @@ orders
 stream_products
 ├── streams (many:1)
 └── products (many:1)
-```
+\`\`\`
 
 ## 🎓 Learning Path
 

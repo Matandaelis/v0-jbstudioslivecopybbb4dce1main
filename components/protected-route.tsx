@@ -15,20 +15,38 @@ interface ProtectedRouteProps {
   children: React.ReactNode
 }
 
-export default function ProtectedRoute({ requiredPermission, requiredRole, children }: ProtectedRouteProps) {
-  const { isAuthenticated, user, loading } = useAuth()
+export default function ProtectedRoute({
+  requiredPermission,
+  requiredRole,
+  children,
+}: ProtectedRouteProps) {
+  const { isAuthenticated, user, loading, authDisabled } = useAuth()
   const router = useRouter()
 
   useEffect(() => {
-    if (!loading && !isAuthenticated) {
+    if (!loading && !isAuthenticated && !authDisabled) {
       router.push("/")
     }
-  }, [loading, isAuthenticated, router])
+  }, [loading, isAuthenticated, router, authDisabled])
 
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary" />
+      </div>
+    )
+  }
+
+  // If auth disabled, show all content with dev warning
+  if (authDisabled) {
+    return (
+      <div>
+        <div className="bg-yellow-50 border border-yellow-200 rounded-md p-4 mb-4">
+          <p className="text-sm text-yellow-800 font-semibold">
+            Development Mode: Authentication is currently disabled. All role and permission checks are bypassed.
+          </p>
+        </div>
+        {children}
       </div>
     )
   }
@@ -49,7 +67,10 @@ export default function ProtectedRoute({ requiredPermission, requiredRole, child
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <p>You don't have permission to access this page. Required role: {requiredRole.join(" or ")}</p>
+            <p>
+              You don't have permission to access this page. Required role:{" "}
+              {requiredRole.join(" or ")}
+            </p>
             <div className="flex gap-2">
               <Button variant="outline" onClick={() => router.back()}>
                 Go Back

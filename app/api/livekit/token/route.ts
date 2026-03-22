@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 import { AccessToken } from "livekit-server-sdk"
-import { createClient } from "@/lib/supabase-server"
+import { requireAuth } from "@/lib/api-auth"
 
 const LIVEKIT_API_KEY = process.env.LIVEKIT_API_KEY
 const LIVEKIT_API_SECRET = process.env.LIVEKIT_API_SECRET
@@ -17,13 +17,10 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "LiveKit configuration missing" }, { status: 500 })
     }
 
-    const supabase = await createClient()
-    const {
-      data: { user },
-    } = await supabase.auth.getUser()
+    const { authorized, response } = await requireAuth()
 
-    if (!user) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+    if (!authorized) {
+      return response
     }
 
     const at = new AccessToken(LIVEKIT_API_KEY, LIVEKIT_API_SECRET, {
