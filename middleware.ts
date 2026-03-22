@@ -1,11 +1,18 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { createServerClient } from "@supabase/ssr"
+import { isAuthEnabled } from "@/lib/auth-config"
 
-const publicRoutes = ["/", "/help-center", "/login", "/signup"]
+const publicRoutes = ["/", "/help-center", "/login", "/signup", "/live-showcase"]
 const protectedRoutes = ["/host-dashboard", "/admin-dashboard", "/super-admin", "/live", "/affiliate-hub"]
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
+
+  // If authentication is disabled, allow all routes
+  if (!isAuthEnabled()) {
+    console.log(`[MIDDLEWARE] Auth disabled - allowing access to ${pathname}`)
+    return NextResponse.next()
+  }
 
   // Skip middleware for public routes
   if (publicRoutes.includes(pathname)) {

@@ -1,27 +1,28 @@
 import { NextResponse } from "next/server"
 import { createClient } from "@/lib/supabase-server"
+import { requireAuth, requireRole } from "@/lib/api-auth"
 
 export async function POST(request: Request) {
   try {
-    const supabase = await createClient()
-    const {
-      data: { user },
-    } = await supabase.auth.getUser()
+    const { authorized, user, response } = await requireAuth()
 
-    if (!user) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+    if (!authorized) {
+      return response
     }
 
     const streamData = await request.json()
 
     // Check if user has permission to create stream
-    const { data: userData } = await supabase.from("users").select("role").eq("id", user.id).single()
+    const { authorized: roleAuthorized, response: roleResponse } = await requireRole(
+      user.id,
+      ["admin", "host", "brand_partner"]
+    )
 
-    const allowedRoles = ["admin", "host", "brand_partner"]
-    if (!userData || !allowedRoles.includes(userData.role)) {
-      return NextResponse.json({ error: "Insufficient permissions" }, { status: 403 })
+    if (!roleAuthorized) {
+      return roleResponse
     }
 
+    const supabase = await createClient()
     const { data, error } = await supabase
       .from("live_streams")
       .insert([
