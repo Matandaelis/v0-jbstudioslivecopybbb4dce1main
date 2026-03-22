@@ -262,3 +262,87 @@ export interface AuditLog {
   error_message?: string
   created_at: string
 }
+
+// ==================== INVENTORY TYPES ====================
+export interface StockLevel {
+  id: string
+  product_id: string
+  warehouse_id?: string
+  quantity_on_hand: number
+  quantity_reserved: number
+  quantity_available: number
+  reorder_point: number
+  reorder_quantity: number
+  last_counted_at?: string
+  created_at: string
+  updated_at: string
+}
+
+export interface StockReservation {
+  id: string
+  product_id: string
+  order_id?: string
+  cart_session_id?: string
+  user_id: string
+  quantity: number
+  expires_at: string
+  created_at: string
+  used_at?: string
+  cancelled_at?: string
+}
+
+export interface StockMovement {
+  id: string
+  product_id: string
+  warehouse_id?: string
+  movement_type: "inbound" | "outbound" | "adjustment" | "count" | "return"
+  quantity: number
+  reference_id?: string
+  reference_type?: string
+  notes?: string
+  user_id?: string
+  created_at: string
+}
+
+export interface LiveEventProduct {
+  id: string
+  event_id: string
+  product_id: string
+  featured_position?: number
+  special_discount?: number
+  quantity_available: number
+  quantity_sold: number
+  spotlight_start?: string
+  spotlight_end?: string
+  created_at: string
+  updated_at: string
+}
+
+export interface LiveEvent {
+  id: string
+  host_id: string
+  room_name: string
+  title: string
+  description?: string
+  status: "scheduled" | "live" | "ended"
+  scheduled_at?: string
+  started_at?: string
+  ended_at?: string
+  thumbnail_url?: string
+  viewer_count: number
+  is_public: boolean
+  created_at: string
+  updated_at: string
+}
+
+export interface InventoryAudit {
+  id: string
+  product_id: string
+  warehouse_id?: string
+  action: "create" | "update" | "delete" | "reserve" | "release" | "sell" | "return" | "adjust"
+  old_values: Record<string, any>
+  new_values: Record<string, any>
+  user_id?: string
+  ip_address?: string
+  created_at: string
+}
