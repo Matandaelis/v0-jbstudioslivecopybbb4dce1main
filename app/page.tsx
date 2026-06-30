@@ -38,7 +38,7 @@ const LIVE_STREAMS = [
     host: "Beauty Creator",
     viewers: 2400,
     thumbnail: "/placeholder.svg",
-    isLive: true,
+    status: "live" as const,
     products: 12,
     discount: 30,
   },
@@ -48,7 +48,7 @@ const LIVE_STREAMS = [
     host: "Style Maven",
     viewers: 1800,
     thumbnail: "/placeholder.svg",
-    isLive: true,
+    status: "live" as const,
     products: 8,
     discount: 25,
   },
@@ -58,7 +58,7 @@ const LIVE_STREAMS = [
     host: "Tech Expert",
     viewers: 3200,
     thumbnail: "/placeholder.svg",
-    isLive: true,
+    status: "live" as const,
     products: 15,
     discount: 40,
   },
@@ -245,13 +245,15 @@ export default function HomePage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
                   {/* Live Badge */}
-                  <Badge className="absolute top-3 left-3 bg-red-500 text-white font-bold">
-                    <span className="relative flex h-2 w-2 mr-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-white" />
-                    </span>
-                    LIVE
-                  </Badge>
+                  {stream.status === "live" && (
+                    <Badge className="absolute top-3 left-3 bg-red-500 text-white font-bold">
+                      <span className="relative flex h-2 w-2 mr-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-white" />
+                      </span>
+                      LIVE
+                    </Badge>
+                  )}
 
                   {/* Discount Badge */}
                   <Badge className="absolute top-3 right-3 bg-secondary text-white font-bold text-lg">

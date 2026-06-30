@@ -2,36 +2,45 @@ import { NextResponse } from "next/server"
 import { AccessToken } from "livekit-server-sdk"
 import { requireAuth } from "@/lib/api-auth"
 
-const LIVEKIT_API_KEY = process.env.LIVEKIT_API_KEY
-const LIVEKIT_API_SECRET = process.env.LIVEKIT_API_SECRET
-
 export async function POST(request: Request) {
   try {
-    const { roomName, userName } = await request.json()
-
-    if (!roomName || !userName) {
-      return NextResponse.json({ error: "Missing roomName or userName" }, { status: 400 })
-    }
-
-    if (!LIVEKIT_API_KEY || !LIVEKIT_API_SECRET) {
-      return NextResponse.json({ error: "LiveKit configuration missing" }, { status: 500 })
-    }
-
-    const { authorized, response } = await requireAuth()
+    const { authorized, user, response } = await requireAuth()
 
     if (!authorized) {
       return response
     }
 
-    const at = new AccessToken(LIVEKIT_API_KEY, LIVEKIT_API_SECRET, {
-      identity: userName,
-      ttl: 24 * 60 * 60, // 24 hours
-    })
+    const { roomName, userName } = await request.json()
 
+    if (!roomName || !userName) {
+      return NextResponse.json(
+        { error: "roomName and userName are required" },
+        { status: 400 }
+      )
+    }
+
+    const apiKey = process.env.LIVEKIT_API_KEY
+    const apiSecret = process.env.LIVEKIT_API_SECRET
+
+    if (!apiKey || !apiSecret) {
+      console.error("LiveKit credentials not configured")
+      return NextResponse.json(
+        { error: "LiveKit is not configured" },
+        { status: 500 }
+      )
+    }
+
+    const at = new AccessToken(apiKey, apiSecret)
+    at.identity = user.id
+    at.name = userName
+    
+    // Grant appropriate permissions based on user role
+    const canPublish = ["host", "brand_partner", "admin"].includes(user.role)
+    
     at.addGrant({
       room: roomName,
       roomJoin: true,
-      canPublish: true,
+      canPublish,
       canPublishData: true,
       canSubscribe: true,
     })
@@ -40,7 +49,10 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ token })
   } catch (error) {
-    console.error("Error generating token:", error)
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 })
+    console.error("Error generating LiveKit token:", error)
+    return NextResponse.json(
+      { error: "Failed to generate token" },
+      { status: 500 }
+    )
   }
 }
