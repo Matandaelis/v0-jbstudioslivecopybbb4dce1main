@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase-server"
 import { AUTH_CONFIG, isAuthEnabled, logAuthDebug, getDevUser } from "@/lib/auth-config"
+import { ROLE_PERMISSIONS } from "@/lib/types"
 import { NextResponse } from "next/server"
 
 export async function getAuthenticatedUser() {
@@ -99,17 +100,8 @@ export async function requirePermission(userId: string, permission: string) {
     .eq("id", userId)
     .single()
 
-  // Check if user's role has the permission
-  const ROLE_PERMISSIONS: Record<string, string[]> = {
-    admin: ["create_stream", "delete_stream", "manage_users", "view_analytics", "manage_roles"],
-    host: ["create_stream", "view_own_analytics"],
-    brand_partner: ["view_products", "create_campaigns"],
-    affiliate: ["view_commissions"],
-    viewer: ["view_streams"],
-    moderator: ["moderate_chat"],
-  }
-
-  const isAuthorized = userData && ROLE_PERMISSIONS[userData.role]?.includes(permission)
+  // Use single source of truth from ROLE_PERMISSIONS in lib/types
+  const isAuthorized = userData && ROLE_PERMISSIONS[userData.role as keyof typeof ROLE_PERMISSIONS]?.includes(permission)
 
   logAuthDebug("API: Permission check", { userId, permission, authorized: isAuthorized })
 
