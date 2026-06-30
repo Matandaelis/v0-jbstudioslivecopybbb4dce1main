@@ -1,0 +1,6 @@
+interface:
+  display_name: "V0 Jbstudioslivecopybbb4dce1main"
+  short_description: "Repo-specific patterns and workflows for v0-jbstudioslivecopybbb4dce1main"
+  default_prompt: "Use the v0-jbstudioslivecopybbb4dce1main repo skill to follow existing architecture, testing, and workflow conventions."
+policy:
+  allow_implicit_invocation: true
