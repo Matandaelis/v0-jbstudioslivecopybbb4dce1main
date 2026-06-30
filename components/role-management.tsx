@@ -15,7 +15,8 @@ interface RoleManagementProps {
   onUserUpdated?: () => void
 }
 
-const AVAILABLE_ROLES: UserRole[] = ["admin", "host", "brand_partner", "vendor", "affiliate", "viewer", "moderator"]
+// Include ALL available roles from UserRole type
+const AVAILABLE_ROLES: UserRole[] = ["admin", "host", "brand_partner", "vendor", "affiliate", "moderator", "seller", "buyer", "viewer"]
 
 const ROLE_COLORS: Record<UserRole, string> = {
   admin: "bg-red-100 text-red-800",
@@ -25,6 +26,8 @@ const ROLE_COLORS: Record<UserRole, string> = {
   affiliate: "bg-yellow-100 text-yellow-800",
   viewer: "bg-gray-100 text-gray-800",
   moderator: "bg-orange-100 text-orange-800",
+  seller: "bg-teal-100 text-teal-800",
+  buyer: "bg-indigo-100 text-indigo-800",
 }
 
 const ROLE_DESCRIPTIONS: Record<UserRole, string> = {
@@ -35,6 +38,8 @@ const ROLE_DESCRIPTIONS: Record<UserRole, string> = {
   affiliate: "Can manage affiliate network and commissions",
   viewer: "Basic viewing and chat access",
   moderator: "Can moderate chat and manage viewers",
+  seller: "Can manage products and view sales",
+  buyer: "Can watch streams, chat, and purchase products",
 }
 
 export default function RoleManagement({ users, onUserUpdated }: RoleManagementProps) {
@@ -42,6 +47,7 @@ export default function RoleManagement({ users, onUserUpdated }: RoleManagementP
   const [editingUserId, setEditingUserId] = useState<string | null>(null)
   const [selectedRole, setSelectedRole] = useState<UserRole | null>(null)
   const [saving, setSaving] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const filteredUsers = users.filter(
     (user) =>
@@ -51,6 +57,7 @@ export default function RoleManagement({ users, onUserUpdated }: RoleManagementP
 
   const handleRoleChange = async (userId: string, newRole: UserRole) => {
     setSaving(true)
+    setError(null)
     try {
       const { error } = await supabase.from("users").update({ role: newRole }).eq("id", userId)
 
@@ -59,8 +66,10 @@ export default function RoleManagement({ users, onUserUpdated }: RoleManagementP
       onUserUpdated?.()
       setEditingUserId(null)
       setSelectedRole(null)
-    } catch (error) {
-      console.error("Error updating role:", error)
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Error updating role"
+      console.error("Error updating role:", err)
+      setError(message)
     } finally {
       setSaving(false)
     }
@@ -77,7 +86,7 @@ export default function RoleManagement({ users, onUserUpdated }: RoleManagementP
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {AVAILABLE_ROLES.map((role) => (
               <div key={role} className="space-y-2">
                 <Badge className={ROLE_COLORS[role]}>{role}</Badge>
@@ -106,6 +115,11 @@ export default function RoleManagement({ users, onUserUpdated }: RoleManagementP
           </div>
         </CardHeader>
         <CardContent>
+          {error && (
+            <div className="mb-4 p-3 bg-red-100 text-red-800 rounded-lg text-sm">
+              {error}
+            </div>
+          )}
           <div className="space-y-3 max-h-96 overflow-y-auto">
             {filteredUsers.map((user) => (
               <div
@@ -157,6 +171,7 @@ export default function RoleManagement({ users, onUserUpdated }: RoleManagementP
                         onClick={() => {
                           setEditingUserId(null)
                           setSelectedRole(null)
+                          setError(null)
                         }}
                       >
                         <X className="w-4 h-4" />
@@ -171,6 +186,7 @@ export default function RoleManagement({ users, onUserUpdated }: RoleManagementP
                         onClick={() => {
                           setEditingUserId(user.id)
                           setSelectedRole(user.role)
+                          setError(null)
                         }}
                       >
                         <Edit className="w-4 h-4" />
